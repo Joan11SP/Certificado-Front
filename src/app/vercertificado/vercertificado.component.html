@@ -9,7 +9,7 @@
 
 <body>
     <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-8 mx-auto">
             <div *ngFor="let user of Usuario">
                 <form>
                     <div class="card" style="justify-content: center;">
@@ -47,9 +47,7 @@
                                         DE VILCABAMBA
                                 </b>
                                 <br>
-                                <p class="fecha" style="
-                            margin-left: auto;
-                            margin-right: auto;"> Loja, {{fechaactual}}
+                                <p class="fecha" style="margin-left: auto;margin-right: auto;"> Loja, {{fechaactual}}
                                     <b>
                                         <p class="codigo"> {{user.codigo}}
                                     </b>
@@ -57,17 +55,17 @@
                     </div>
                 </form>
             </div><br>
-            
-        <div>
-            <form>
-               <div  class="col-md-2 mx-auto">
-                <button type="submit" class="btn btn-dark"(click)="print()">Imprimir</button>
-               </div>
-                <div class="col-md-0 mx-auto" style="float:left;">
-                    <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
-                </div>
-            </form>
-        </div>
+
+            <div>
+                <form>
+                    <div class="col-md-2 mx-auto">
+                        <button type="submit" class="btn btn-dark" (click)="print()">Imprimir</button>
+                    </div>
+                    <div class="col-md-0 mx-auto" style="float:left;">
+                        <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </div>

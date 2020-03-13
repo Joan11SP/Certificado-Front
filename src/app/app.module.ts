@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagPrincipalComponent } from './pag-principal/pag-principal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormDatos1Component } from './form-datos1/form-datos1.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { VercertificadoComponent } from './vercertificado/vercertificado.component';
@@ -14,7 +13,6 @@ import { VercertificadoComponent } from './vercertificado/vercertificado.compone
   declarations: [
     AppComponent,
     PagPrincipalComponent,
-    FormDatos1Component,
     VercertificadoComponent,
     
   ],
