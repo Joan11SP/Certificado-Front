@@ -1,0 +1,39 @@
+.card-subtitle {
+    text-align: center;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.img {
+    top: 8px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 22px;
+}
+
+.card {
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.image {
+    width: 550px;
+    height: 550px;
+}
+
+.firmas {
+    font-size: 15px;
+}
+
+.codigo {
+    font-size: 9px;
+    text-align: right;
+}
+.volver{
+    margin-left: auto;
+    margin-right: auto;
+}

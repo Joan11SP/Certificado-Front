@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Los iconos tipo Solid de Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Nuestro css-->
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-10 mx-auto">      
+  <div>
+    <div id="barra">
+      <div class="image">
+        <img src="../../assets/istl.PNG" style="width: 450px;">
+      </div>
+    </div>
+    <br>
+    <div class="text-center">        
+        <div class="container">
+          <form class="col-14" [formGroup]="form_validar" (ngSubmit)="getCertificado()" novalidate>
+            <div class="form-group" id="user-group">
+              <input type="text" id="cod" autofocus='true' class="form-control" color="dark"
+                placeholder="INGRESE EL CÓDIGO DEL CERTIFICADO" [(ngModel)]="Certificado.codigo"
+                formControlName="codigo" style="width: 350px;" /><br>
+            </div>
+            <div *ngIf='codigo.invalid && (codigo.dirty || codigo.touched)'>
+              <h2>El campo no puede estar vacio</h2>
+            </div>
+            <div id="alert">
+              <div >
+                <h5 class="alert alert-danger" style="width: 450px; height: 100;
+                margin-left: auto;
+                margin-right: auto;" role="alert">{{vacio}}</h5>
+              </div>
+            </div>
+            <div class="boton" class="col-14">
+              <a href="../vercertificado/vercertificado.component.html"></a> <button type="submit" class="btn btn-dark" style="width: 150px; height: 500;"
+                [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</body>
+
+</html>

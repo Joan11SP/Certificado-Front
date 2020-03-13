@@ -1,0 +1,6 @@
+#barra{
+    background: #46a29f;
+    background: -webkit-linear-gradient(to right, #ffffff, #DBDBDB, #F2F2F2, #46a29f);
+    height: 200px;
+    width: 100%;
+}

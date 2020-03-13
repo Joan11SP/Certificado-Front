@@ -1,0 +1,63 @@
+#barra{
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2980B9, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #fff, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 200px;
+    
+}
+
+
+.main-section{
+    margin:0 auto;
+    margin-top:0%;
+    padding: 0;
+}
+
+.modal-content{
+    background-color: #3b4652;
+    opacity: .85;
+    box-shadow: px 0px 3px #848484;
+}
+
+
+.form-group input{
+    height: 45px;
+    font-size: 15px;
+    padding-left: 45px;
+    border-radius: 500px;
+    border-color:black;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 8px;
+    font-size: 22px;
+    padding-top:8px;
+}
+
+.form-group#user-group::before{
+    content: "\f007";
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.boton{
+    width:45px;
+    margin: 25px 0 25px;
+}
+#alert{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.image{
+    
+    margin-left: auto;
+    margin-right: auto;
+}

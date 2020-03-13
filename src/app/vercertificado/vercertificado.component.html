@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div *ngFor="let user of Usuario">
+                <form>
+                    <div class="card" style="justify-content: center;">
+                        <div class="img" align="left">
+                            <img src="../../assets/istl000.png" class="card-img-top" style="width: 170px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="../../assets/SENESCYT.png" class="card-imgS-top" style="width: 170px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="../../assets/GADVILCA.png" class="card-imgG-top" style="width: 170px;">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">CERTIFICA</h2>
+                            <h3 class="card-subtitle">A</h3>
+                            <h3 class="card-title">{{user.names}}</h3>
+                            <br>
+                            <p class="card-text">Por haber asistido a la Capacitación de {{user.name_carrer}} bajo el
+                                Proyecto “{{user.name_project}}”, en el barrio {{user.barrio}}, parroquia
+                                {{user.parroquia}}, Cantón Loja; con una duración de {{user.horas}}
+                                horas.</p>
+                            <br>
+                            <br>
+                            <br>
+                            <p class="linea">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _________________________
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                _________________________
+                                <b>
+                                    <p class="firmas">&nbsp;&nbsp;&nbsp;&nbsp; Dr. Richard Ruiz Ordoñez
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ing.
+                                        Carlos Ortiz<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RECTOR DEL INSTITUTO
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRESIDENTE
+                                        DEL GOBIERNO<br>
+                                        &nbsp;&nbsp;SUPERIOR TECNOLOGICO LOJA
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARROQUIAL
+                                        DE VILCABAMBA
+                                </b>
+                                <br>
+                                <p class="fecha" style="
+                            margin-left: auto;
+                            margin-right: auto;"> Loja, {{fechaactual}}
+                                    <b>
+                                        <p class="codigo"> {{user.codigo}}
+                                    </b>
+                        </div>
+                    </div>
+                </form>
+            </div><br>
+            
+        <div>
+            <form>
+               <div  class="col-md-2 mx-auto">
+                <button type="submit" class="btn btn-dark"(click)="print()">Imprimir</button>
+               </div>
+                <div class="col-md-0 mx-auto" style="float:left;">
+                    <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
+                </div>
+            </form>
+        </div>
+        </div>
+
+    </div>
+</body>
+
+
+
+</html>
