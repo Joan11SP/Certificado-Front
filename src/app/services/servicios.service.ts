@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Certificado } from '../Modelos/Modelo';
+import {  Login } from '../Modelos/Login';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,10 +11,12 @@ export class ServiciosService {
     
    }
 
-   heroku="https://certificado-nodejs.herokuapp.com/api/datos_certificado/"
-   url="searchCertifi"
+   heroku="https://certificado-nodejs.herokuapp.com/api/"
    
    obtenerdatos(codigo:Certificado){
-     return this.http.post(this.heroku+this.url,codigo);
+     return this.http.post(`${this.heroku}datos_certificado/searchCertifi`,codigo)
+   }
+   getLogin(login:Login){
+     return this.http.post(`${this.heroku}datos_usuario/getLogin`,login)
    }
 }

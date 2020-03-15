@@ -1,0 +1,31 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Login</h5>
+            <form class="form-signin" [formGroup]="form_logeo" (ngSubmit)="getLogin()">
+              <div class="form-label-group">
+                <label for="inputEmail" style="padding-left: 0.5em;">Usuario</label>
+                <input type="email" id="inputEmail"[(ngModel)]="logeo.dni"
+                formControlName="dni" class="form-control" required autofocus>
+              </div>
+
+              <div class="form-label-group">
+                <label for="inputPassword" style="padding-left: 0.5em;">Contraseña</label>
+                <input type="password" id="inputPassword"[(ngModel)]="logeo.password"
+                formControlName="password" class="form-control"  required>
+              </div>
+              <div>
+                <span style="color: red;">{{error}}</span>
+              </div><br>
+              <button class="btn btn-lg btn-dark btn-block text-uppercase" type="submit">Ingresar</button>
+              <hr class="my-4">
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { VercertificadoComponent } from './vercertificado/vercertificado.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagPrincipalComponent,
     VercertificadoComponent,
+    LoginComponent,
     
   ],
   imports: [
