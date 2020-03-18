@@ -9,6 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { VercertificadoComponent } from './vercertificado/vercertificado.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard,LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

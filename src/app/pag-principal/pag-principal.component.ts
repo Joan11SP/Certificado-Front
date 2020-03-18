@@ -3,6 +3,7 @@ import { ServiciosService } from '../services/servicios.service';
 import { Certificado } from '../Modelos/Modelo';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
+import { $ } from 'protractor';
 @Component({
   selector: 'app-pag-principal',
   templateUrl: './pag-principal.component.html',
@@ -43,5 +44,8 @@ export class PagPrincipalComponent implements OnInit {
   get codigo() { return this.form_validar.get('codigo') }
 
   getUser() {
+  }
+  showModal(){
+    document.getElementById('modal').style.display="block"
   }
 }
