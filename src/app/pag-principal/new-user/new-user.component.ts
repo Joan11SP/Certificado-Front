@@ -10,7 +10,7 @@ import { ServiciosService } from 'src/app/services/servicios.service';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
-  User:User={
+  public User:User={
     dni: "",
     names: "",    
     genero: "",
@@ -18,8 +18,11 @@ export class NewUserComponent implements OnInit {
     role: "", 
     password: ""
   }
-  role:any=[]
-  form_user:FormGroup
+  public role:any=[]
+  public user:any=[]
+  public error:string
+  public save:string
+  public form_user:FormGroup
   constructor(private router:Router,private form:FormBuilder,private service:ServiciosService) {
     this.form_user=this.form.group({
       dni:"",
@@ -44,6 +47,17 @@ export class NewUserComponent implements OnInit {
     console.log(this.User)
     this.service.postUser(this.User).subscribe(data=>{
       console.log(data)
+      this.user=data
+      if(this.user.mensaje=="cedula_existe"){
+        this.error="La identificación ya existe"
+        document.getElementById('error').style.display="block"
+      }else if(this.user.mensaje=="cedula_incorrecta"){
+        this.error="La cédula ingresada es incorrecta"
+        document.getElementById('error').style.display="block"
+      }else if(this.user.length===1){
+        this.save='Se ha guardado Correctamente'
+        document.getElementById('save').style.display="block"
+      }
     })
   }
 }

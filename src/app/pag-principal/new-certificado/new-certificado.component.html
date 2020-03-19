@@ -8,9 +8,8 @@
     <!-- bootrap y stilos -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+
+    </head>
 
 <body>
     <div class="row">
@@ -19,51 +18,73 @@
                 <form role="form" [formGroup]="form_certifi" (ngSubmit)="newCertificado()">
                     <div class="form-group">
                         <label>Codigo:</label>
-                        <input type="text" class="form-control"  [(ngModel)]="Certificado.codigo" formControlName="codigo" id="codigo">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.codigo"
+                            formControlName="codigo" id="codigo">
                     </div>
                     <div class="form-group">
                         <label>Nombre Completo:</label>
-                        <input type="text" class="form-control" [(ngModel)]="Certificado.names" formControlName="names"id="nombrescerti">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.names" formControlName="names"
+                            id="nombrescerti">
                     </div>
                     <div class="form-group">
                         <label>Cedula:</label>
-                        <input type="number" class="form-control" [(ngModel)]="Certificado.dni" formControlName="dni"id="cedula">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.dni" formControlName="dni"
+                            id="cedula">
                     </div>
                     <div class="form-group">
                         <label>Nombre de la carrera:</label>
-                        <select name="miselect" class="form-control"[(ngModel)]="Certificado.name_carrer" formControlName="name_carrer">
+                        <select name="miselect" class="form-control" [(ngModel)]="Certificado.name_carrer"
+                            formControlName="name_carrer">
                             <option [value]="carrera.id" *ngFor="let carrera of carrera">{{carrera.nameCarrer}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Nombre del proyecto:</label>
-                        <input type="text" class="form-control" [(ngModel)]="Certificado.name_project" formControlName="name_project"id="proyecto">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.name_project"
+                            formControlName="name_project" id="proyecto">
                     </div>
                     <div class="form-group">
                         <label>Barrio:</label>
-                        <input type="text" class="form-control"[(ngModel)]="Certificado.barrio" formControlName="barrio" id="barrio">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.barrio"
+                            formControlName="barrio" id="barrio">
                     </div>
                     <div class="form-group">
                         <label>Parroquia:</label>
-                        <input type="text" class="form-control" [(ngModel)]="Certificado.parroquia" formControlName="parroquia"id="parroquia">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.parroquia"
+                            formControlName="parroquia" id="parroquia">
                     </div>
                     <div class="form-group">
                         <label>Canton:</label>
-                        <input type="text" class="form-control" [(ngModel)]="Certificado.canton" formControlName="canton"id="canton">
+                        <input type="text" class="form-control" [(ngModel)]="Certificado.canton"
+                            formControlName="canton" id="canton">
                     </div>
                     <div class="form-group">
                         <label>Numero de horas:</label>
-                        <input type="number" class="form-control" [(ngModel)]="Certificado.horas" formControlName="horas" id="horas">
+                        <input type="number" class="form-control" [(ngModel)]="Certificado.horas"
+                            formControlName="horas" id="horas">
                     </div>
                     <div class="form-group">
                         <label>Fecha de Inicio:</label>
-                        <input type="date" name="trip-start" [(ngModel)]="Certificado.date_inicio" formControlName="date_inicio" id="fechainicio">
+                        <input type="date" name="trip-start" [(ngModel)]="Certificado.date_inicio"
+                            formControlName="date_inicio" id="fechainicio">
                     </div>
                     <div class="form-group">
                         <label>Fecha de Fin:</label>
-                        <input type="date" name="trip-start" [(ngModel)]="Certificado.date_fin" formControlName="date_fin" id="fechaFin">
+                        <input type="date" name="trip-start" [(ngModel)]="Certificado.date_fin"
+                            formControlName="date_fin" id="fechaFin">
                     </div>
-                    <button type="submit" class="btn btn-default">Guardar</button>
+
+                    <div style="display: none;" id="save">
+                        <div class="alert alert-success " role="alert">
+                            {{save}}
+                        </div>
+                    </div>
+                    <div style="display: none;" id="error">
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Guardar</button>
                 </form>
             </div>
         </div>

@@ -44,6 +44,16 @@
                     <option [value]="role.id" *ngFor="let role of role">{{role.role}}</option>
                 </select>
             </div>
+            <div style="display: none;" id="save" >
+                <div class="alert alert-success "  role="alert">
+                    {{save}}
+                  </div>
+            </div>
+            <div style="display: none;" id="error" >
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{error}}
+                  </div>
+            </div>
 
             <button type="submit" class="btn btn-dark">Guardar</button>
         </form>

@@ -24,6 +24,9 @@ export class NewCertificadoComponent implements OnInit {
     date_fin: null
   }
   carrera: any = []
+  public certifi:any=[]
+  public error:string
+  public save:string
   form_certifi: FormGroup
   constructor(private router: Router, private form: FormBuilder, private service: ServiciosService) {
     this.form_certifi = this.form.group({
@@ -52,6 +55,19 @@ export class NewCertificadoComponent implements OnInit {
   }
   newCertificado() {
     console.log(this.Certificado)
-    
+    this.service.postCertifi(this.Certificado).subscribe(data=>{
+      this.certifi=data
+      console.log(data)
+      if(this.certifi.mensaje=="cedula_existe"){
+        this.error="La identificación ya existe"
+        document.getElementById('error').style.display="block"
+      }else if(this.certifi.mensaje=="cedula_incorrecta"){
+        this.error="La cédula ingresada es incorrecta"
+        document.getElementById('error').style.display="block"
+      }else if(this.certifi.length===1){
+        this.save='Se ha guardado Correctamente'
+        document.getElementById('save').style.display="block"
+      }
+    })
   }
 }
