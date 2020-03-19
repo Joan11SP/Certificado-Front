@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootrap y stilos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="container">
+    <div>
+        <form role="form" [formGroup]="form_user" (ngSubmit)="newUser()">
+            <div class="form-group">
+                <label>Cédula:</label>
+                <input type="text" class="form-control" [(ngModel)]="User.dni" formControlName="dni"id="dni">
+            </div>
+            <div class="form-group">
+                <label>Nombre Completo:</label>
+                <input type="text" class="form-control" [(ngModel)]="User.names" formControlName="names" id="nombres">
+            </div>
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" class="form-control" [(ngModel)]="User.password" formControlName="password" id="contraseña">
+            </div>
+            <div class="form-group">
+                <label>Genero:</label>
+                <select name="miselect" class="form-control"  [(ngModel)]="User.genero" formControlName="genero"id="genero">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Telefono:</label>
+                <input type="text" class="form-control" [(ngModel)]="User.telefono" formControlName="telefono" id="telefono">
+            </div>
+            <div class="form-group">
+                <label>Rol:</label>
+                <select name="miselect" class="form-control"  [(ngModel)]="User.role" formControlName="role">
+                    <option [value]="role.id" *ngFor="let role of role">{{role.role}}</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Guardar</button>
+        </form>
+    </div>
+</body>
+
+</html>

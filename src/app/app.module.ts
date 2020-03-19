@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { VercertificadoComponent } from './vercertificado/vercertificado.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { NewUserComponent } from './pag-principal/new-user/new-user.component';
+import { NewCertificadoComponent } from './pag-principal/new-certificado/new-certificado.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { AuthGuard } from './guards/auth.guard';
     PagPrincipalComponent,
     VercertificadoComponent,
     LoginComponent,
+    NewUserComponent,
+    NewCertificadoComponent,
     
   ],
   imports: [

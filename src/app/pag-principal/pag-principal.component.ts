@@ -48,4 +48,11 @@ export class PagPrincipalComponent implements OnInit {
   showModal(){
     document.getElementById('modal').style.display="block"
   }
+  
+  pagUser(){
+    this.router.navigate(['newUser'])
+  }
+  pagCertifi(){
+    this.router.navigate(['newCertifi'])
+  }
 }

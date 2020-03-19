@@ -5,18 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
   <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   <!-- Los iconos tipo Solid de Fontawesome-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
   <!-- Nuestro css-->
 </head>
 
 <body>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-10 mx-auto">
       <div>
         <div id="barra">
@@ -44,9 +45,8 @@
                 </div>
               </div>
               <div class="boton" class="col-14">
-                <a href="../vercertificado/vercertificado.component.html"></a> <button type="submit"
-                  class="btn btn-dark" style="width: 150px; height: 500;" [disabled]="!form_validar.valid"><i
-                    class="fas fa-sign-in-alt"></i> BUSCAR </button>
+                <button type="submit" class="btn btn-dark" style="width: 150px; height: 500;"
+                  [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
               </div>
             </form>
           </div>
@@ -54,8 +54,66 @@
       </div>
     </div>
   </div>
-  
+-->
+  <!-- barra superior-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link">CERTIFICADOS ISTL <span class="sr-only" aria-disabled="true">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <div class="boton" class="col-14">
+            <button type="submit" class="btn btn-dark" (click)="pagUser()"> Nuevo Usuario </button>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="boton" class="col-14">
+            <button type="submit" class="btn btn-dark" (click)="pagCertifi()"> Nuevo Certificado </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- boton cerrar sesion-->
+    <button type="button" class="btn btn-primary">Cerrar Sesion</button>
+  </nav>
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Buscar Certificado </h3>
+        </div>
+        <div class="card-body">
+          <form class="form-signin" [formGroup]="form_validar" (ngSubmit)="getCertificado()" novalidate>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <!--imput de dni-->
+              <input type="text" placeholder="Ingrese su DNI" class="form-control" [(ngModel)]="Certificado.codigo"
+                formControlName="codigo" required autofocus>
+            </div>
 
+            <div *ngIf='codigo.invalid && (codigo.dirty || codigo.touched)'>
+              <h2 style="font-size: 15px;">El campo no puede estar vacio</h2>
+            </div>
+            <div id="alert">
+              <div>
+                <h5 class="alert alert-danger" style="width: 450px; height: 100;
+                margin-left: auto;
+                margin-right: auto;" role="alert">{{vacio}}</h5>
+              </div>
+            </div>
+
+            <div class="boton" class="col-14">
+              <button type="submit" class="btn btn-dark" style="width: 150px; height: 500;"
+                [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </body>
