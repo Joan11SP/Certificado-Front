@@ -1,4 +1,4 @@
-export interface Login{
-    dni:string,
-    password:string
+export class Login{
+    dni?:string;
+    password?:string
 }

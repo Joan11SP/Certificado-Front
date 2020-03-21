@@ -2,15 +2,13 @@
 body {
   background-image: url(../../assets/istlVilca.png);
   background-repeat: no-repeat;
-  height: 100%;
+  height: 100vh;
   font-family: 'Numans', sans-serif;
   margin-left: 7px;
   margin-right: 5px;
-  margin-top: 10px;
 }
 
 .container {
-  height: 100%;
   align-content: center;
 }
 

@@ -4,16 +4,16 @@ import { Certificado } from '../Modelos/Modelo';
 import {  Login } from '../Modelos/Login';
 import { newCertificado } from '../Modelos/certificado';
 import { User } from '../Modelos/user';
+import { Users } from '../Modelos/Users';
 @Injectable({
   providedIn: 'root'
 })
 export class ServiciosService {
-
   constructor(private http: HttpClient) {
     
    }
-
-   heroku="https://certificado-nodejs.herokuapp.com/api/"
+   heroku="http://localhost:3000/api/"
+   //heroku="https://certificado-nodejs.herokuapp.com/api/"
    
    obtenerdatos(codigo:Certificado){
      return this.http.post(`${this.heroku}datos_certificado/searchCertifi`,codigo)
@@ -32,5 +32,23 @@ export class ServiciosService {
    }
    postUser(user:User){
     return this.http.post(`${this.heroku}datos_usuario/newPerson`,user)
+   }
+   getOneCertifi(){
+     return this.http.get<any>(`${this.heroku}datos_certificado/searchCertifi`)
+   }
+   getOnePerson(){
+     return this.http.get<any>(`${this.heroku}datos_usuario/searchPerson`)
+   }
+   updateUser(user:User){
+    return this.http.post(`${this.heroku}datos_usuario/updatePerson`,user)
+   }
+   deletePerson(delet:Users){
+     return this.http.post(`${this.heroku}datos_usuario/deletePerson`,delet)
+   }
+   updateCertifi(certificado:newCertificado){
+     return this.http.post(`${this.heroku}datos_certificado/updateCertifi`,certificado)
+   }
+   deleteCertifi(codigo:Certificado){
+     return this.http.post(`${this.heroku}datos_certificado/deleteCertifi`,codigo)
    }
 }

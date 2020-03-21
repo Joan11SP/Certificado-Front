@@ -12,8 +12,8 @@ const routes: Routes = [
   {path:"home",component:PagPrincipalComponent,canActivate:[AuthGuard]},
   {path:"verCertificado",component:VercertificadoComponent,canActivate:[AuthGuard]},
   {path:"login",component:LoginComponent},
-  {path:"newUser",component:NewUserComponent},
-  {path:"newCertifi",component:NewCertificadoComponent}
+  {path:"newUser",component:NewUserComponent,canActivate:[AuthGuard]},
+  {path:"newCertifi",component:NewCertificadoComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

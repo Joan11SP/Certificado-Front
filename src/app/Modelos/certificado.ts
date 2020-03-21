@@ -1,4 +1,5 @@
 export interface newCertificado {
+    _id:string,
     codigo: string,
     names: string,
     dni: string,
@@ -8,7 +9,7 @@ export interface newCertificado {
     parroquia: string,
     canton: string,
     horas: number,
-    date_inicio: Date,
-    date_fin: Date
+    date_inicio: string,
+    date_fin: string
 
 }
