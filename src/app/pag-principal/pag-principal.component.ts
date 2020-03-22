@@ -4,6 +4,7 @@ import { Certificado } from '../Modelos/Modelo';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 import { $ } from 'protractor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-pag-principal',
   templateUrl: './pag-principal.component.html',
@@ -16,8 +17,8 @@ export class PagPrincipalComponent implements OnInit {
     codigo: ""
   }
   form_validar: FormGroup;
-  vacio
-  constructor(private servicio: ServiciosService, private form: FormBuilder, private router: Router) {
+  vacio:string= "Verfique si la información es Correcta!"
+  constructor(private servicio: ServiciosService, private form: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.form_validar = this.form.group({
       codigo: ["", Validators.required]
     })
@@ -27,15 +28,17 @@ export class PagPrincipalComponent implements OnInit {
   }
   async getCertificado() {
     await this.servicio.obtenerdatos(this.Certificado).subscribe(
-       data => {
+      data => {
+        console.log(data)
         this.User = localStorage.setItem("usuarios", JSON.stringify(data))
         this.Datos = data
-        if(this.Datos.length===1){
+        if (this.Datos.length === 1) {
           console.log(this.Datos)
           this.router.navigate(['verCertificado'])
-        }else{
-          this.vacio="Verfique si la información es Correcta!"
-          document.getElementById('alert').style.display = 'block'        
+        } else {
+
+          this.openSnackBar(this.vacio)
+
         }
       },
       err => console.log(err)
@@ -43,16 +46,18 @@ export class PagPrincipalComponent implements OnInit {
   }
   get codigo() { return this.form_validar.get('codigo') }
 
-  getUser() {
-  }
-  showModal(){
-    document.getElementById('modal').style.display="block"
-  }
   
-  pagUser(){
+  showModal() {
+    document.getElementById('modal').style.display = "block"
+  }
+
+  pagUser() {
     this.router.navigate(['newUser'])
   }
-  pagCertifi(){
+  pagCertifi() {
     this.router.navigate(['newCertifi'])
+  }
+  openSnackBar(message) {
+    this.snackBar.open(message, '', { duration: 2000 });
   }
 }

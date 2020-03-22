@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-vercertificado',
   templateUrl: './vercertificado.component.html',
   styleUrls: ['./vercertificado.component.css']
 })
 export class VercertificadoComponent implements OnInit {
-  Usuario:any=[]
+  Usuario: any = []
   fechaactual
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.Usuario=JSON.parse(localStorage.getItem("usuarios"))
-    var fecha=new Date()
-    var dia =fecha.getDay()
-    var mes = fecha.getUTCMonth()
-    var anio = fecha.getFullYear()
-    this.fechaactual = `${dia}/${mes}/${anio}` ;
-    console.log(`${dia}/${mes}/${anio}`)
-
+    this.Usuario = JSON.parse(localStorage.getItem("usuarios"))
+    this.fechaactual = moment().format('YYYY/MM/DD')
+    console.log(this.fechaactual)
   }
 
-  print(){
-    window.print()
+  print() {
+     
+    window.print();
+    return true;
   }
-  volver(){
-    localStorage.clear();
+  volver() {
+    localStorage.removeItem('usuarios');
     this.router.navigate(['home'])
   }
 

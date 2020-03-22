@@ -14,8 +14,8 @@
         <div class="d-flex justify-content-center h-100">
           <div class="card">
             <div class="card-header">
-              <h3>Inicio de Sesion</h3>
-
+              
+              <h3>Inicio de Sesión</h3>
             </div>
             <div class="card-body">
               <form class="form-signin" [formGroup]="form_logeo" (ngSubmit)="getLogin()">
@@ -24,7 +24,7 @@
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                   </div>
                   <!--imput de usuario-->
-                  <input type="text" class="form-control" [(ngModel)]="logeo.dni" formControlName="dni" required
+                  <input type="text" class="form-control" [(ngModel)]="logeo.dni" formControlName="dni"
                     autofocus>
                 </div>
                 <div class="input-group form-group">
@@ -34,11 +34,8 @@
                   </div>
 
                   <input type="password" placeholder="password" class="form-control" [(ngModel)]="logeo.password"
-                    formControlName="password" required>
+                    formControlName="password">
                 </div>
-                <div>
-                  <span style="color: red;">{{error}}</span>
-                </div><br>
                 <input type="submit" value="Login" class="btn float-right login_btn">
               </form>
             </div>
@@ -48,14 +45,7 @@
     </div>
   </div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  
 </body>
 
 </html>

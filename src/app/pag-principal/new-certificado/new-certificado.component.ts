@@ -5,7 +5,6 @@ import { newCertificado } from 'src/app/Modelos/certificado';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { Certificado } from 'src/app/Modelos/Modelo';
 import * as moment from 'moment';
-import { $ } from 'protractor';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-new-certificado',
