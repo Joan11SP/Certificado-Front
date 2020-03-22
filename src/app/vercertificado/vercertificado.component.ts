@@ -13,7 +13,7 @@ export class VercertificadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.Usuario = JSON.parse(localStorage.getItem("usuarios"))
-    this.fechaactual = moment().format('YYYY/MM/DD')
+    this.fechaactual = moment().format('DD/MM/YYYY')
     console.log(this.fechaactual)
   }
 

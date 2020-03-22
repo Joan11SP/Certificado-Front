@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="vercertificado.component.html" media="all" />
+    <link rel="stylesheet" type="text/css" href="vercertificado.component.html" media="print" />
     <title>Document</title>
+    
 </head>
 
 <body>
-    <div class="container" style="padding-top: 20px;" id="certificado">
-        <div class="row mx-auto">
+    <div class="container" id="certificado" *ngFor="let user of Usuario">
+        <div class="row mx-auto" style="padding-top: 25px;">
             <div class="col mx-auto">
                 <img src="../../assets/istl000.png" class="card-img-top img-fluid">
             </div>
@@ -21,63 +23,55 @@
                 <img src="../../assets/GADVILCA.png" class="card-img-top img-fluid">
             </div>
         </div>
-        <div class="row" *ngFor="let user of Usuario" style="padding-top: 50px;">
-            <!--
-            
-            
-            
-            
-            
-            
-            
-             
-        -->
+        <div class="row"  style="padding-top: 50px;">
             <div class="col-md mx-auto">
-                <div>
-                    <h1 class="text-center" style="font-size:30px;">CERTIFICA</h1>
-                    <h1 class="text-center"style="font-size: 30px;">A</h1>
-                    <h1 class="text-center"style="font-size:30px;">{{user.names}}</h1>
-                    <br>
-                    <p class="text-center" style="font-weight:normal;font-size:30px;">Por haber asistido a la Capacitación de {{user.name_carrer}} bajo el
-                        Proyecto “{{user.name_project}}”,<br> en el barrio {{user.barrio}}, parroquia {{user.parroquia}}, del Cantón Loja,
-                        con una duración de {{user.horas}} horas.</p>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-6" >
-                        ________________________________<br>
-                        Dr. Richard Ruiz Ordoñez<br>
-                        RECTOR DEL <br>
-                        SUPERIOR TECNOLOGICO LOJA
-                    </div>
-                    <div class="col-md-3"></div>
-                    <div class="col">
-                        ________________________________<br>
-                        Carlos Ortiz PREFECTO DEL GOBIERNO<br>
-                        DE VILCABAMBA
-                    </div>
-                </div>
+                <h1 class="text-center" style="font-size:50px;">CERTIFICA</h1>
+                <h1 class="text-center" style="font-size: 30px;">A</h1>
+                <h1 class="text-center" style="font-size:30px;">{{user.names}}</h1>
                 <br>
-                <h2 class="fecha text-center"> Loja, {{fechaactual}}</h2>
-                <b>
-                    <p class="codigo">{{user.codigo}}</p>
-                </b>
+                <p class="text-center" style="font-weight:normal;font-size:30px;">Por haber asistido a la Capacitación
+                    de {{user.name_carrer}} bajo el
+                    Proyecto “{{user.name_project}}”,<br> en el barrio {{user.barrio}}, parroquia {{user.parroquia}},
+                    del Cantón Loja,
+                    con una duración de {{user.horas}} horas.</p>
+                <br>
+                <br>
+                <br>
+                
             </div>
         </div>
-    </div>
+        <div class="row mx-auto"id="firmas">
+            <div class="col" id="firmaIzquierda">
+                ________________________________<br>
+                Dr. Richard Ruiz Ordoñez<br>
+                RECTOR DEL <br>
+                SUPERIOR TECNOLOGICO LOJA
+            </div>
+            <div  class="col" id="firmaDerecha">
+                ________________________________<br>
+                Carlos Ortiz<br> PREFECTO DEL GOBIERNO<br>
+                DE VILCABAMBA
+            </div>
+        </div>
+        <br>
+        <h2 class="fecha text-center"> Loja, {{fechaactual}}</h2>
+        <div style="float: right; font-size: 20px;">
+            <b>{{user.codigo}}</b>
+        </div>
+        <form class="btns">
+            <div class="row mx-auto">
+                <div class="col-md-4 mx-auto">
+                    <button type="submit" class="btn btn-dark" (click)="print()">Imprimir</button>
+                </div>
+                <div class="col-md-3 ">
+                    <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
+                </div>
+            </div>
+        </form>
+        <br>
+
+</div>
     
-    <form>
-        <div class="row mx-auto">
-            <div class="col-md-4 mx-auto">
-                <button type="submit" class="btn btn-dark" (click)="print()">Imprimir</button>
-            </div>
-            <div class="col-md-3 ">
-                <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
-            </div>
-        </div>           
-    </form>
 </body>
 
 
