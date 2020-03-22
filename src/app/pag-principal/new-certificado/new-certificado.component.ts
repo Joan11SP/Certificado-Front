@@ -6,6 +6,7 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 import { Certificado } from 'src/app/Modelos/Modelo';
 import * as moment from 'moment';
 import { $ } from 'protractor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-new-certificado',
   templateUrl: './new-certificado.component.html',
@@ -36,7 +37,7 @@ export class NewCertificadoComponent implements OnInit {
   public oneCertifi: any = []
   form_certifi: FormGroup
   form_search: FormGroup
-  constructor(private router: Router, private form: FormBuilder, private service: ServiciosService) {
+  constructor(private router: Router, private form: FormBuilder, private service: ServiciosService,private snackBar:MatSnackBar) {
     this.form_certifi = this.form.group({
       _id:[""],
       codigo: ["", Validators.required],
@@ -59,8 +60,6 @@ export class NewCertificadoComponent implements OnInit {
   ngOnInit(): void {
     this.getCarreras()
     this.getOneCertifi()
-    document.getElementById('error').style.display="none"      
-    document.getElementById('save').style.display="none"
   }
   getCarreras() {
     this.service.getCarreras().subscribe(data => {
@@ -88,13 +87,13 @@ export class NewCertificadoComponent implements OnInit {
     this.Certificado.date_fin = moment(certifi.date_fin).format("YYYY-MM-DD");
   }
   deleteCertificado() {
-    console.log("hdsfasfsadas",this.Certificado)
     this.service.deleteCertifi(this.Certificado).subscribe(data => {
       this.oneCertifi = data
       if (this.oneCertifi.deletedCount === 1) {
         this.form_certifi.reset()
         this.getOneCertifi()
         this.save = "Se elimino correctamente"
+        this.openSnackBar(this.save)
       }
     })
   }
@@ -103,10 +102,13 @@ export class NewCertificadoComponent implements OnInit {
       this.certifi = data
       if(this.certifi.mensaje==="cedula_incorrecta"){
         this.error= "La cédula ingresada es incorrecta"
+        this.openSnackBar(this.error)
       }
       else if(this.certifi.nModified===1){
-        this.form_certifi.reset()
         this.save="Actualizado Correctamente"
+        this.openSnackBar(this.save)
+        this.form_certifi.reset()
+        this.getOneCertifi()
       }
     })
   }
@@ -116,14 +118,15 @@ export class NewCertificadoComponent implements OnInit {
       console.log(data)
       if (this.certifi.mensaje == "cedula_incorrecta") {
         this.error = "La cédula ingresada es incorrecta"
-        document.getElementById('error').style.display = "block"
+        this.openSnackBar(this.error)
       }else if (this.certifi.mensaje == "codigo_existe") {
         this.error = "La código ingresado ya esta registrado"
-        document.getElementById('error').style.display = "block"
+        this.openSnackBar(this.error)
       }else if (this.certifi.length === 1) {
         this.save = 'Se ha guardado Correctamente'
+        this.getOneCertifi()
+        this.openSnackBar(this.save)
         this.form_certifi.reset()
-        document.getElementById('save').style.display = "block"
       }
     })
   }
@@ -131,6 +134,9 @@ export class NewCertificadoComponent implements OnInit {
     this.form_certifi.reset()
   }
 
+  openSnackBar(message){    
+    this.snackBar.open(message,'',{duration:2000});
+  }
   get codigo() { return this.form_certifi.get('codigo') }
   get dni() { return this.form_certifi.get('dni') }
   get names() { return this.form_certifi.get('names') }

@@ -12,7 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NewUserComponent } from './pag-principal/new-user/new-user.component';
 import { NewCertificadoComponent } from './pag-principal/new-certificado/new-certificado.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,9 @@ import { NewCertificadoComponent } from './pag-principal/new-certificado/new-cer
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [AuthGuard,LoginComponent],
   bootstrap: [AppComponent]

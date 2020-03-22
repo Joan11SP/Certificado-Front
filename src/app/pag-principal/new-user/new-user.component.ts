@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/Modelos/user';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { Users } from 'src/app/Modelos/Users';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-new-user',
@@ -30,7 +31,7 @@ export class NewUserComponent implements OnInit {
   public save: string
   public oneuser: any = []
   public form_user: FormGroup
-  constructor(private router: Router, private form: FormBuilder, private service: ServiciosService) {
+  constructor(private router: Router, private form: FormBuilder, private service: ServiciosService,private snackBar:MatSnackBar) {
     //sirve para agragar el form y poder obtener los datos del fomulario
     this.form_user = this.form.group({
       _id: [''],
@@ -46,10 +47,8 @@ export class NewUserComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.getRole()
-    document.getElementById('error').style.display = "none"
-    document.getElementById('save').style.display = "none"
     this.getOneUser()
   }
   //obtiene los roles de los usuarios
@@ -83,12 +82,13 @@ export class NewUserComponent implements OnInit {
       this.oneuser = data
       if (this.oneuser.deletedCount === 1) {
         this.save = "Se elimino Correctamente"
+        this.openSnackBar(this.save)
         this.form_user.reset()
         this.getOneUser()
       }
       else {
         this.error = "No se encontro tal Usuario"
-        document.getElementById('error').style.display = "block"
+        this.openSnackBar(this.error)
       }
     })
   }
@@ -96,14 +96,14 @@ export class NewUserComponent implements OnInit {
   updateUser() {
     this.service.updateUser(this.User).subscribe(data => {
       this.user = data
+      console.log(data)
       if (this.user.mensaje == "cedula_existe") {
         this.error = "La identificación ya existe"
-        document.getElementById('error').style.display = "block"
-
+        this.openSnackBar(this.error)
       } else if (this.user.nModified === 1) {        
         this.form_user.reset()
         this.save = 'Se ha modificado Correctamente'
-        document.getElementById('save').style.display = "block"
+        this.openSnackBar(this.save)
         this.getOneUser()
       }
     })
@@ -115,19 +115,25 @@ export class NewUserComponent implements OnInit {
       this.user = data
       if (this.user.mensaje == "cedula_existe") {
         this.error = "La identificación ya existe"
-        document.getElementById('error').style.display = "block"
+        this.openSnackBar(this.error)
       } else if (this.user.mensaje == "cedula_incorrecta") {
         this.error = "La cédula ingresada es incorrecta"
-        document.getElementById('error').style.display = "block"
+        this.openSnackBar(this.error)
       } else if (this.user.length === 1) {
         this.save = 'Se ha guardado Correctamente'
+        this.openSnackBar(this.save)
+        this.form_user.reset()
         this.getOneUser()        
-        document.getElementById('save').style.display = "block"
       }
     })
   }
   openModal(){
     this.form_user.reset()
+  }
+  openSnackBar(message){    
+    this.snackBar.open(message,'',{
+      duration:2000
+    });
   }
   //metodos para el form y validar si un campo esta vacio.
   get dni() { return this.form_user.get('dni') }

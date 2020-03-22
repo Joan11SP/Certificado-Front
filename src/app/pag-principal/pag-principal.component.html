@@ -89,7 +89,6 @@
               <input type="text" placeholder="Ingrese su DNI" class="form-control" [(ngModel)]="Certificado.codigo"
                 formControlName="codigo" required autofocus>
             </div>
-
             <div *ngIf='codigo.invalid && (codigo.dirty || codigo.touched)'>
               <h2 style="font-size: 15px;">El campo no puede estar vacio</h2>
             </div>
@@ -110,8 +109,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
-
 </html>
