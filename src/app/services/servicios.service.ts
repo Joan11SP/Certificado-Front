@@ -16,7 +16,7 @@ export class ServiciosService {
    heroku="https://certificado-nodejs.herokuapp.com/api/"
    
    obtenerdatos(codigo:Certificado){
-     return this.http.post(`${this.heroku}datos_certificado/searchOneCertifi`,codigo)
+     return this.http.post<Certificado>(`${this.heroku}datos_certificado/searchOneCertifi`,codigo)
    }
    getLogin(login:Login){
      return this.http.post(`${this.heroku}datos_usuario/getLogin`,login)

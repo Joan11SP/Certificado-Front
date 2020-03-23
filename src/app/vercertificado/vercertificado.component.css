@@ -41,15 +41,19 @@
 @media print {
     .btns{
         display: none;
-    }
-    
+    }      
     #firmaDerecha{
         text-align: end;
     }
     #fimraIzquierda{
-        text-align: start;
+        text-align: start; 
     }
     #firmas{
         padding: 25px;
+        font-size: 20px !important;
+    }
+    #codigo{
+        margin-left:900px !important;
+        font-size: 20px;
     }
 }

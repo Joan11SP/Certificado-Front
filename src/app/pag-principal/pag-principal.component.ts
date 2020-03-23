@@ -26,24 +26,20 @@ export class PagPrincipalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  async getCertificado() {
+  async getCertificado(codigo) {
     await this.servicio.obtenerdatos(this.Certificado).subscribe(
       data => {
-        console.log(data)
-        this.User = localStorage.setItem("usuarios", JSON.stringify(data))
         this.Datos = data
         if (this.Datos.length === 1) {
-          console.log(this.Datos)
-          this.router.navigate(['verCertificado'])
+          this.router.navigate(['verCertificado',codigo.value])
         } else {
-
           this.openSnackBar(this.vacio)
-
         }
       },
       err => console.log(err)
     )
   }
+  
   get codigo() { return this.form_validar.get('codigo') }
 
   

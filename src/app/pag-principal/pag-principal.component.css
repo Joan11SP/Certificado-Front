@@ -47,10 +47,7 @@
 }
 
 
-.boton{
-    width:45px;
-    margin: 25px 0 25px;
-}
+
 #alert{
     display: none;
     margin-left: auto;
@@ -74,17 +71,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.nav-item:hover {
-    color: antiquewhite;
-    background-color: #1e454e;
-    border-radius: 15px;
-}
 
-.btn:hover {
-    color: black;
-    background-color: rgb(133, 179, 216);
-    border-radius: 15px;
-}
+
 
 .card {
     height: 300px;

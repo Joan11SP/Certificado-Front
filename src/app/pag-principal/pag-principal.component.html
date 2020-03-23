@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ISTL</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
   <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -17,44 +17,6 @@
 </head>
 
 <body>
-  <!-- <div class="row">
-    <div class="col-md-10 mx-auto">
-      <div>
-        <div id="barra">
-          <div class="image">
-            <img src="../../assets/istl.PNG" style="width: 450px;">
-          </div>
-        </div>
-        <br>
-        <div class="text-center">
-          <div class="container">
-            <form class="col-14" [formGroup]="form_validar" (ngSubmit)="getCertificado()" novalidate>
-              <div class="form-group" id="user-group">
-                <input type="text" id="cod" autofocus='true' class="form-control" color="dark"
-                  placeholder="INGRESE EL CÓDIGO DEL CERTIFICADO" [(ngModel)]="Certificado.codigo"
-                  formControlName="codigo" style="width: 350px;" /><br>
-              </div>
-              <div *ngIf='codigo.invalid && (codigo.dirty || codigo.touched)'>
-                <h2>El campo no puede estar vacio</h2>
-              </div>
-              <div id="alert">
-                <div>
-                  <h5 class="alert alert-danger" style="width: 450px; height: 100;
-                margin-left: auto;
-                margin-right: auto;" role="alert">{{vacio}}</h5>
-                </div>
-              </div>
-              <div class="boton" class="col-14">
-                <button type="submit" class="btn btn-dark" style="width: 150px; height: 500;"
-                  [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
--->
   <!-- barra superior-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -63,10 +25,10 @@
           <a class="nav-link">CERTIFICADOS ISTL <span class="sr-only" aria-disabled="true">(current)</span></a>
         </li>
         <li class="nav-item">
-            <button type="submit" class="btn btn-primary" (click)="pagUser()"> Nuevo Usuario </button>
+            <button type="submit" class="btn btn-primary" (click)="pagUser()">Usuarios ISTL </button>
         </li>
         <li class="nav-item">
-            <button type="submit" class="btn btn-primary" (click)="pagCertifi()"> Nuevo Certificado </button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 50px;" (click)="pagCertifi()">Certificados ISTL </button>
         </li>
       </ul>
     </div>
@@ -80,17 +42,17 @@
           <h3>Buscar Certificado </h3>
         </div>
         <div class="card-body">
-          <form class="form-signin" [formGroup]="form_validar" (ngSubmit)="getCertificado()" novalidate>
+          <form class="form-signin" [formGroup]="form_validar" (ngSubmit)="getCertificado(codigo)" novalidate>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
               <!--imput de dni-->
-              <input type="text" placeholder="Ingrese su DNI" class="form-control" [(ngModel)]="Certificado.codigo"
-                formControlName="codigo" required autofocus>
+              <input type="text" placeholder="Código" class="form-control" [(ngModel)]="Certificado.codigo"
+                formControlName="codigo" required autofocus #codigo>
             </div>
             <div *ngIf='codigo.invalid && (codigo.dirty || codigo.touched)'>
-              <h2 style="font-size: 15px;">El campo no puede estar vacio</h2>
+              <h2 style="font-size: 15px;text-align: center;">El campo no puede estar vacio</h2>
             </div>
             <div id="alert">
               <div>
@@ -101,7 +63,7 @@
             </div>
 
             <div class="boton" class="col-14">
-              <button type="submit" class="btn btn-dark" style="width: 150px; height: 500;"
+              <button type="submit" class="btn btn-dark" style="width: 150px; height: 500; margin-left: 110px; border-radius: 15px;"
                 [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
             </div>
           </form>

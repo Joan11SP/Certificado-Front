@@ -40,7 +40,7 @@
                 
             </div>
         </div>
-        <div class="row mx-auto"id="firmas">
+        <div class="row mx-auto" id="firmas">
             <div class="col" id="firmaIzquierda">
                 ________________________________<br>
                 Dr. Richard Ruiz Ordoñez<br>
@@ -55,7 +55,7 @@
         </div>
         <br>
         <h2 class="fecha text-center"> Loja, {{fechaactual}}</h2>
-        <div style="float: right; font-size: 20px;">
+        <div id="codigo">
             <b>{{user.codigo}}</b>
         </div>
         <form class="btns">
@@ -72,6 +72,12 @@
 
 </div>
     
+<div *ngIf="Usuario.length===0">
+    <h1 class="text-center" style="padding-top: 200px; font-size: 30px;">Cargando...</h1>
+</div>
+<div *ngIf="noSelected==0">
+    <h1 class="text-center" style="padding-top: 200px; font-size: 30px;">No se ha buscado ningún Certificado</h1>
+</div>
 </body>
 
 

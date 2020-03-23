@@ -14,6 +14,7 @@ import { NewUserComponent } from './pag-principal/new-user/new-user.component';
 import { NewCertificadoComponent } from './pag-principal/new-certificado/new-certificado.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NotFoundComponent } from './guards/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LoginComponent,
     NewUserComponent,
     NewCertificadoComponent,
+    NotFoundComponent,
     
   ],
   imports: [

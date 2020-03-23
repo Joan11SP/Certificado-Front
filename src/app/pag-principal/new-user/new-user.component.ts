@@ -100,7 +100,12 @@ export class NewUserComponent implements OnInit {
       if (this.user.mensaje == "cedula_existe") {
         this.error = "La identificación ya existe"
         this.openSnackBar(this.error)
-      } else if (this.user.nModified === 1) {        
+      }
+      else if(this.user.mensaje=="cedula_incorrecta"){
+        this.error = "La identificaciónes incorrecta"
+        this.openSnackBar(this.error)
+      } 
+      else if (this.user.nModified === 1) {        
         this.form_user.reset()
         this.save = 'Se ha modificado Correctamente'
         this.openSnackBar(this.save)
