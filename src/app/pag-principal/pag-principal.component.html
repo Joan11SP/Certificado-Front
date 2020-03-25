@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISTL</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -25,10 +26,15 @@
           <a class="nav-link">CERTIFICADOS ISTL <span class="sr-only" aria-disabled="true">(current)</span></a>
         </li>
         <li class="nav-item">
-            <button type="submit" class="btn btn-primary" (click)="pagUser()">Usuarios ISTL </button>
+          <button type="submit" class="btn btn-primary" (click)="pagUser()">Usuarios ISTL </button>
         </li>
         <li class="nav-item">
-            <button type="submit" class="btn btn-primary" style="margin-left: 50px;" (click)="pagCertifi()">Certificados ISTL </button>
+          <button type="submit" class="btn btn-primary" style="margin-left: 50px;" (click)="pagCertifi()">Certificados
+            ISTL </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" data-toggle="modal" data-target="#image" class="btn btn-primary"
+            style="margin-left: 50px;">Agregar Imagen </button>
         </li>
       </ul>
     </div>
@@ -63,7 +69,8 @@
             </div>
 
             <div class="boton" class="col-14">
-              <button type="submit" class="btn btn-dark" style="width: 150px; height: 500; margin-left: 110px; border-radius: 15px;"
+              <button type="submit" class="btn btn-dark"
+                style="width: 150px; height: 500; margin-left: 110px; border-radius: 15px;"
                 [disabled]="!form_validar.valid"><i class="fas fa-sign-in-alt"></i> BUSCAR </button>
             </div>
           </form>
@@ -71,5 +78,38 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="image" tabindex="-1" role="dialog" data-backdrop="false"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form_image" novalidate>
+            <label style="color: white;">Nombre la imagen</label>
+            <input type="text" class="form-control" #nombre autofocus [(ngModel)]="Image.nombre" formControlName="nombre"><br>
+            <input type="file" class="d-none" (change)="photoSelect($event)" #changePhoto accept=".jpg,.jpeg,.png" [(ngModel)]="Image.photo" formControlName="photo">
+            <img [src]="photoSelected || '../../assets/noImage.png'" (click)="changePhoto.click()"
+              class="img-fluid"><br>
+            <div class="modal-footer">
+              <div class="col">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-dark" style="margin-left:20px"
+                  (click)="sendPhoto(nombre)" [disabled]="!form_image.valid">Guardar</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

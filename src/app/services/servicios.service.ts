@@ -14,6 +14,7 @@ export class ServiciosService {
    }
    //heroku="http://localhost:3000/api/"
    heroku="https://certificado-nodejs.herokuapp.com/api/"
+   images="http://localhost:3000/api/"
    
    obtenerdatos(codigo:Certificado){
      return this.http.post<Certificado>(`${this.heroku}datos_certificado/searchOneCertifi`,codigo)
@@ -51,4 +52,16 @@ export class ServiciosService {
    deleteCertifi(codigo:Certificado){
      return this.http.post(`${this.heroku}datos_certificado/deleteCertifi`,codigo)
    }
+   getImages(){
+     return this.http.get(`${this.images}all`)
+   }
+   postImages(nombre:string,photo:File){
+     const fileImage = new FormData();
+     fileImage.append('nombre',nombre);
+     fileImage.append('image',photo)
+    return this.http.post(`${this.images}saveImage`,fileImage)
+  }
+  postOneImage(id:string){
+    return this.http.post(`${this.images}oneImage`,id)
+  }
 }

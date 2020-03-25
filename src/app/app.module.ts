@@ -23,7 +23,7 @@ import { NotFoundComponent } from './guards/not-found/not-found.component';
     LoginComponent,
     NewUserComponent,
     NewCertificadoComponent,
-    NotFoundComponent,
+    NotFoundComponent
     
   ],
   imports: [

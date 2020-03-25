@@ -7,23 +7,23 @@
     <link rel="stylesheet" type="text/css" href="vercertificado.component.html" media="all" />
     <link rel="stylesheet" type="text/css" href="vercertificado.component.html" media="print" />
     <title>Document</title>
-    
+
 </head>
 
 <body>
     <div class="container" id="certificado" *ngFor="let user of Usuario">
         <div class="row mx-auto" style="padding-top: 25px;">
             <div class="col mx-auto">
-                <img src="../../assets/istl000.png" class="card-img-top img-fluid">
+                <img [src]="'http://localhost:3000' + viewPhoto.path ||'../../assets/istl000.png'" class="card-img-top img-fluid">
             </div>
-            <div class="col  mx-auto">
-                <img src="../../assets/SENESCYT.png" class="card-img-top img-fluid">
+            <div class="col  mx-auto" >
+                <img [src]="'http://localhost:3000' + viewPhoto2.path ||' ../../assets/SENESCYT.png'" class="card-img-top img-fluid">
             </div>
             <div class="col mx-auto">
-                <img src="../../assets/GADVILCA.png" class="card-img-top img-fluid">
+                <img [src]="'http://localhost:3000' + viewPhoto3.path ||' ../../assets/GADVILCA.png'" class="card-img-top img-fluid">
             </div>
         </div>
-        <div class="row"  style="padding-top: 50px;">
+        <div class="row" style="padding-top: 50px;">
             <div class="col-md mx-auto">
                 <h1 class="text-center" style="font-size:50px;">CERTIFICA</h1>
                 <h1 class="text-center" style="font-size: 30px;">A</h1>
@@ -37,7 +37,7 @@
                 <br>
                 <br>
                 <br>
-                
+
             </div>
         </div>
         <div class="row mx-auto" id="firmas">
@@ -47,7 +47,7 @@
                 RECTOR DEL <br>
                 SUPERIOR TECNOLOGICO LOJA
             </div>
-            <div  class="col" id="firmaDerecha">
+            <div class="col" id="firmaDerecha">
                 ________________________________<br>
                 Carlos Ortiz<br> PREFECTO DEL GOBIERNO<br>
                 DE VILCABAMBA
@@ -58,7 +58,7 @@
         <div id="codigo">
             <b>{{user.codigo}}</b>
         </div>
-        <form class="btns">
+        <form class="btns" [formGroup]="form_image" id="selecImage">
             <div class="row mx-auto">
                 <div class="col-md-4 mx-auto">
                     <button type="submit" class="btn btn-dark" (click)="print()">Imprimir</button>
@@ -67,19 +67,38 @@
                     <button type="submit" class="btn btn-dark" (click)="volver()">Volver</button>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3 ">
+                    <select class="form-control" [(ngModel)]="Image._id" formControlName="_id"
+                        (change)="getOnePhoto($event)">
+                        <option *ngFor="let img of Images" selected [value]="img._id">{{img.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 ">
+                    <select class="form-control" [(ngModel)]="Image._id" formControlName="_id"
+                        (change)="getOnePhoto2($event)">
+                        <option *ngFor="let imga of Images" selected [value]="imga._id">{{imga.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 ">
+                    <select class="form-control" [(ngModel)]="Image._id" formControlName="_id"
+                        (change)="getOnePhoto3($event)">
+                        <option *ngFor="let imge of Images" selected [value]="imge._id">{{imge.nombre}}</option>
+                    </select>
+                </div>
+            </div>
         </form>
         <br>
 
-</div>
-    
-<div *ngIf="Usuario.length===0">
-    <h1 class="text-center" style="padding-top: 200px; font-size: 30px;">Cargando...</h1>
-</div>
-<div *ngIf="noSelected==0">
-    <h1 class="text-center" style="padding-top: 200px; font-size: 30px;">No se ha buscado ningún Certificado</h1>
-</div>
+    </div>
+
+    <div *ngIf="Usuario.length===0">
+        <div class="text-center" style="padding-top: 250px;">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
 </body>
-
-
 
 </html>

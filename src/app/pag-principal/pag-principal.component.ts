@@ -16,11 +16,22 @@ export class PagPrincipalComponent implements OnInit {
   Certificado: Certificado = {
     codigo: ""
   }
+  Image:any={
+    nombre:"",
+    photo:null
+  }
   form_validar: FormGroup;
+  form_image:FormGroup;
   vacio:string= "Verfique si la información es Correcta!"
+  file :File
+  photoSelected
   constructor(private servicio: ServiciosService, private form: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.form_validar = this.form.group({
       codigo: ["", Validators.required]
+    })
+    this.form_image=this.form.group({
+      nombre:["",Validators.required],
+      photo:[null,Validators.required]
     })
   }
 
@@ -55,5 +66,25 @@ export class PagPrincipalComponent implements OnInit {
   }
   openSnackBar(message) {
     this.snackBar.open(message, '', { duration: 2000 });
+  }
+  photoSelect(event){
+    const photo = event.target.files
+    if(event.target.files && event.target.files[0]){
+      this.file = <File>photo[0]
+      const reader = new FileReader();
+      reader.onload = e => this.photoSelected = reader.result
+      reader.readAsDataURL(this.file)
+      console.log(this.file)
+    }
+  }
+  sendPhoto(nombre){
+    this.servicio.postImages(nombre.value,this.file).subscribe(data=>{
+      this.User=data
+      console.log(data)
+      if(this.User.mensaje=="guardado"){
+        this.openSnackBar('Se guardo Correctamente')
+        
+      }
+    })
   }
 }

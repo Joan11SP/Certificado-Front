@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ServiciosService } from '../services/servicios.service';
 import { Certificado } from '../Modelos/Modelo';
+import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-vercertificado',
   templateUrl: './vercertificado.component.html',
@@ -14,31 +15,73 @@ export class VercertificadoComponent implements OnInit {
   Certificado: Certificado = {
     codigo: ""
   }
-  noSelected:number
-  constructor(private router: Router,private routerActivated:ActivatedRoute,private servicio:ServiciosService) { }
+  Images: any = []
+  Image:any={
+    _id:""
+  }
+  form_image:FormGroup
+  viewPhoto:any=[]
+  viewPhoto2:any=[]
+  viewPhoto3:any=[]
+  constructor(private form:FormBuilder, private router: Router, private routerActivated: ActivatedRoute, private servicio: ServiciosService) { 
+    this.form_image=this.form.group({
+      _id:[""]
+    })
+  }
 
   ngOnInit(): void {
-    
-    this.routerActivated.params.subscribe(params=>{
-      if(params['id']==""){
-        this.noSelected=0
-      }
-      this.Certificado.codigo=params['id']      
+    this.getId()
+    this.getImage()
+    console.log(this.Image)
+  }
+  getId() {
+    //ger Certifi
+    this.routerActivated.params.subscribe(params => {
+      this.Certificado.codigo = params['id']
     })
-      this.servicio.obtenerdatos(this.Certificado).subscribe(
-        data=>this.Usuario=data
-      )         
-      this.fechaactual = moment().format('DD/MM/YYYY')          
+    this.servicio.obtenerdatos(this.Certificado).subscribe(
+      data => this.Usuario = data
+    )
+    this.fechaactual = moment().format('DD/MM/YYYY')
+  }
+  getImage() {
+    //get Images
+    this.servicio.getImages().subscribe(data => {
+      this.Images = data
+      console.log(data)
+    })
   }
 
   print() {
-     
+
     window.print();
     return true;
   }
   volver() {
     localStorage.removeItem('usuarios');
     this.router.navigate(['home'])
+  }
+  getOnePhoto(event){
+    this.Image._id=event.target.value
+    this.servicio.postOneImage(this.Image).subscribe(data=>{
+     this.viewPhoto=data
+     console.log(this.viewPhoto.path)
+     
+    })
+  }
+  getOnePhoto2(event){
+    this.Image._id=event.target.value
+    this.servicio.postOneImage(this.Image).subscribe(data=>{
+      this.viewPhoto2=data
+      console.log(data)
+    })
+  }
+  getOnePhoto3(event){
+    this.Image._id=event.target.value
+    this.servicio.postOneImage(this.Image).subscribe(data=>{
+      this.viewPhoto3=data
+      
+    })
   }
 
 }

@@ -42,6 +42,9 @@
     .btns{
         display: none;
     }      
+    #selecImage{
+        display: none;
+    }
     #firmaDerecha{
         text-align: end;
     }
