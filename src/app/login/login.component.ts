@@ -30,13 +30,10 @@ export class LoginComponent implements OnInit {
     localStorage.clear()
   }
   getLogin() {
-    console.log(this.logeo)
     this.servicio.getLogin(this.logeo).subscribe(res => {
       this.Login = res
-      console.log(this.Login.mensaje)
       if (this.Login.length === 1) {
         this.Login.forEach(element => {
-          console.log(element.role)
           if (element.role == "1") {
             this.router.navigate(['home'])
             localStorage.setItem('sesion', JSON.stringify(res));

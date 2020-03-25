@@ -23,6 +23,7 @@ export class VercertificadoComponent implements OnInit {
   viewPhoto:any=[]
   viewPhoto2:any=[]
   viewPhoto3:any=[]
+  img="https://image-multer.herokuapp.com"
   constructor(private form:FormBuilder, private router: Router, private routerActivated: ActivatedRoute, private servicio: ServiciosService) { 
     this.form_image=this.form.group({
       _id:[""]

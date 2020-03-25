@@ -14,7 +14,8 @@ export class ServiciosService {
    }
    //heroku="http://localhost:3000/api/"
    heroku="https://certificado-nodejs.herokuapp.com/api/"
-   images="http://localhost:3000/api/"
+   //images="http://localhost:3000/api/"
+   images="https://image-multer.herokuapp.com/api/"
    
    obtenerdatos(codigo:Certificado){
      return this.http.post<Certificado>(`${this.heroku}datos_certificado/searchOneCertifi`,codigo)

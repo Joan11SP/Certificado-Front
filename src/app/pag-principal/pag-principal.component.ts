@@ -83,7 +83,7 @@ export class PagPrincipalComponent implements OnInit {
       console.log(data)
       if(this.User.mensaje=="guardado"){
         this.openSnackBar('Se guardo Correctamente')
-        
+        this.form_image.reset()
       }
     })
   }

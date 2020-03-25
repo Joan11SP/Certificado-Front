@@ -90,12 +90,13 @@
         </div>
 
         <!--Modal de Registros-->
-        <div class="modal fade" id="updateOrSave" tabindex="-1" data-backdrop="false" role="document" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="updateOrSave" tabindex="-1" data-backdrop="false" role="document"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Certificado ISTL</h3>
+                        <h3 class="modal-title text-center" id="exampleModalLabel">Certificado ISTL</h3><br>
+                        <h4 class="modal-subtitle"style="padding-top:25px;" >Campos obligatorios</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -104,7 +105,8 @@
                         <div class="container">
                             <div>
                                 <div>
-                                    <form role="form" [formGroup]="form_certifi" (ngSubmit)="newCertificado()">
+                                    <form role="form" [formGroup]="form_certifi" (ngSubmit)="newCertificado()"
+                                        novalidate>
                                         <div class="row mx-auto">
                                             <input type="text" class="form-control" [(ngModel)]="Certificado._id"
                                                 formControlName="_id" disabled><br>
@@ -174,7 +176,12 @@
                                                     id="fechaFin">
                                             </div><br>
                                         </div><br>
-                                        <button type="submit" class="btn btn-dark">Guardar</button>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-dark"
+                                                [disabled]="!form_certifi.valid">Guardar</button>
+                                            <button type="button" class="btn btn-primary"
+                                                data-dismiss="modal">Cancelar</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

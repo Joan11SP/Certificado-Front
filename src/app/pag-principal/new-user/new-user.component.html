@@ -90,12 +90,13 @@
         </div>
     </div>
     <!-- Modal con Registros -->
-    <div class="modal fade" id="updateOrSave" tabindex="-1" role="document"  data-backdrop="false" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="updateOrSave" tabindex="-1" role="document" data-backdrop="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Usuarios del Sistema</h3>
+                    <h3 class="modal-title text-center" id="exampleModalLabel">Usuarios del Sistema</h3>
+                    <h4 class="modal-subtitle" style="padding-top: 20px;">Campos obligatorios</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -120,10 +121,6 @@
                                                 <label>Nombre Completo:</label>
                                                 <input type="text" class="form-control" [(ngModel)]="User.names"
                                                     formControlName="names" id="nombres">
-                                                <div *ngIf='names.invalid && (names.dirty || names.touched) '
-                                                    class="text-center">
-                                                    <p style="color:rgb(223, 110, 110);">Ingrese los nombres</p>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -131,10 +128,6 @@
                                                 <label>Contraseña:</label>
                                                 <input type="password" class="form-control" [(ngModel)]="User.password"
                                                     formControlName="password" id="contraseña">
-                                                <div *ngIf='password.invalid && (password.dirty || password.touched) '
-                                                    class="text-center">
-                                                    <p style="color:rgb(223, 110, 110);">Ingrese una contraseña</p>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -147,10 +140,6 @@
                                                 <option>Seleccione una opcion</option>
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Femenino</option>
-                                                <div *ngIf='genero.invalid && (genero.dirty || genero.touched) '
-                                                    class="text-center">
-                                                    <p style="color:rgb(223, 110, 110);">Escoga una opción</p>
-                                                </div>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
@@ -172,11 +161,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <button type="submit" id="guardar" class="btn btn-dark">Guardar</button>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" id="guardar" [disabled]="!form_user.valid"
+                                            class="btn btn-dark">Guardar</button>
+                                        <button type="button" class="btn btn-primary"
+                                            data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </form>
 
