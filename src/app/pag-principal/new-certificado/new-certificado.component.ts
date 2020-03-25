@@ -111,7 +111,6 @@ export class NewCertificadoComponent implements OnInit {
   saveCertifi(){
     this.service.postCertifi(this.Certificado).subscribe(data => {
       this.certifi = data
-      console.log(data)
       if (this.certifi.mensaje == "cedula_incorrecta") {
         this.openSnackBar("La cédula ingresada es incorrecta")
       }else if (this.certifi.mensaje == "codigo_existe") {

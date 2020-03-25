@@ -32,7 +32,6 @@ export class VercertificadoComponent implements OnInit {
   ngOnInit(): void {
     this.getId()
     this.getImage()
-    console.log(this.Image)
   }
   getId() {
     //ger Certifi
@@ -48,7 +47,6 @@ export class VercertificadoComponent implements OnInit {
     //get Images
     this.servicio.getImages().subscribe(data => {
       this.Images = data
-      console.log(data)
     })
   }
 
@@ -65,7 +63,6 @@ export class VercertificadoComponent implements OnInit {
     this.Image._id=event.target.value
     this.servicio.postOneImage(this.Image).subscribe(data=>{
      this.viewPhoto=data
-     console.log(this.viewPhoto.path)
      
     })
   }
@@ -73,7 +70,6 @@ export class VercertificadoComponent implements OnInit {
     this.Image._id=event.target.value
     this.servicio.postOneImage(this.Image).subscribe(data=>{
       this.viewPhoto2=data
-      console.log(data)
     })
   }
   getOnePhoto3(event){
