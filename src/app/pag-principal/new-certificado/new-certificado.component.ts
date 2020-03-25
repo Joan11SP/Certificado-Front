@@ -31,8 +31,6 @@ export class NewCertificadoComponent implements OnInit {
   }
   carrera: any = []
   public certifi: any = []
-  public error: string
-  public save: string
   public oneCertifi: any = []
   form_certifi: FormGroup
   form_search: FormGroup
@@ -90,9 +88,8 @@ export class NewCertificadoComponent implements OnInit {
       this.oneCertifi = data
       if (this.oneCertifi.deletedCount === 1) {
         this.form_certifi.reset()
-        this.getOneCertifi()
-        this.save = "Se elimino correctamente"
-        this.openSnackBar(this.save)
+        this.getOneCertifi();
+        this.openSnackBar("Se elimino correctamente")
       }
     })
   }
@@ -100,12 +97,10 @@ export class NewCertificadoComponent implements OnInit {
     this.service.updateCertifi(this.Certificado).subscribe(data => {
       this.certifi = data
       if(this.certifi.mensaje==="cedula_incorrecta"){
-        this.error= "La cédula ingresada es incorrecta"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La cédula ingresada es incorrecta")
       }
       else if(this.certifi.nModified===1){
-        this.save="Actualizado Correctamente"
-        this.openSnackBar(this.save)
+        this.openSnackBar("Actualizado Correctamente")
         this.form_certifi.reset()
         this.getOneCertifi()
       }
@@ -116,15 +111,12 @@ export class NewCertificadoComponent implements OnInit {
       this.certifi = data
       console.log(data)
       if (this.certifi.mensaje == "cedula_incorrecta") {
-        this.error = "La cédula ingresada es incorrecta"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La cédula ingresada es incorrecta")
       }else if (this.certifi.mensaje == "codigo_existe") {
-        this.error = "La código ingresado ya esta registrado"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La código ingresado ya esta registrado")
       }else if (this.certifi.length === 1) {
-        this.save = 'Se ha guardado Correctamente'
         this.getOneCertifi()
-        this.openSnackBar(this.save)
+        this.openSnackBar('Se ha guardado Correctamente')
         this.form_certifi.reset()
       }
     })

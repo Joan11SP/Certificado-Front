@@ -27,8 +27,6 @@ export class NewUserComponent implements OnInit {
   form_search: FormGroup
   public role: any = []
   public user: any = []
-  public error: string
-  public save: string
   public oneuser: any = []
   public form_user: FormGroup
   constructor(private router: Router, private form: FormBuilder, private service: ServiciosService,private snackBar:MatSnackBar) {
@@ -81,14 +79,12 @@ export class NewUserComponent implements OnInit {
     this.service.deletePerson(this.User).subscribe(data => {
       this.oneuser = data
       if (this.oneuser.deletedCount === 1) {
-        this.save = "Se elimino Correctamente"
-        this.openSnackBar(this.save)
+        this.openSnackBar( "Se elimino Correctamente")
         this.form_user.reset()
         this.getOneUser()
       }
       else {
-        this.error = "No se encontro tal Usuario"
-        this.openSnackBar(this.error)
+        this.openSnackBar("No se encontro tal Usuario")
       }
     })
   }
@@ -98,17 +94,14 @@ export class NewUserComponent implements OnInit {
       this.user = data
       console.log(data)
       if (this.user.mensaje == "cedula_existe") {
-        this.error = "La identificación ya existe"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La identificación ya existe")
       }
       else if(this.user.mensaje=="cedula_incorrecta"){
-        this.error = "La identificaciónes incorrecta"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La identificaciónes incorrecta")
       } 
       else if (this.user.nModified === 1) {        
         this.form_user.reset()
-        this.save = 'Se ha modificado Correctamente'
-        this.openSnackBar(this.save)
+        this.openSnackBar('Se ha modificado Correctamente')
         this.getOneUser()
       }
     })
@@ -119,14 +112,11 @@ export class NewUserComponent implements OnInit {
       console.log(data)
       this.user = data
       if (this.user.mensaje == "cedula_existe") {
-        this.error = "La identificación ya existe"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La identificación ya existe")
       } else if (this.user.mensaje == "cedula_incorrecta") {
-        this.error = "La cédula ingresada es incorrecta"
-        this.openSnackBar(this.error)
+        this.openSnackBar("La cédula ingresada es incorrecta")
       } else if (this.user.length === 1) {
-        this.save = 'Se ha guardado Correctamente'
-        this.openSnackBar(this.save)
+        this.openSnackBar('Se ha guardado Correctamente')
         this.form_user.reset()
         this.getOneUser()        
       }
