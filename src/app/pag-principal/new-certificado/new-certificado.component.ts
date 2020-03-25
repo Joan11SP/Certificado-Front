@@ -84,12 +84,14 @@ export class NewCertificadoComponent implements OnInit {
     this.Certificado.date_fin = moment(certifi.date_fin).format("YYYY-MM-DD");
   }
   deleteCertificado() {
-    this.service.deleteCertifi(this.Certificado).subscribe(data => {
+    var delete1={
+      codigo:this.Certificado.codigo
+    }
+    this.service.deleteCertifi(delete1).subscribe(data => {
       this.oneCertifi = data
-      if (this.oneCertifi.deletedCount === 1) {
-        this.form_certifi.reset()
-        this.getOneCertifi();
-        this.openSnackBar("Se elimino correctamente")
+      if(this.oneCertifi.nModified==1){
+        this.openSnackBar("Se elimino Correctamente")
+        this.getOneCertifi()
       }
     })
   }

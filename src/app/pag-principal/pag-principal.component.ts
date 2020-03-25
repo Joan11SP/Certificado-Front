@@ -84,7 +84,11 @@ export class PagPrincipalComponent implements OnInit {
       if(this.User.mensaje=="guardado"){
         this.openSnackBar('Se guardo Correctamente')
         this.form_image.reset()
+        this.photoSelected=false
       }
     })
+  }
+  cancel(){
+    this.photoSelected=false
   }
 }

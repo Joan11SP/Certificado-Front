@@ -65,6 +65,7 @@
                     </table>
                 </div>
             </div>
+        </div>
             <!-- Modal para Eliminar-->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -87,7 +88,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <!--Modal de Registros-->
         <div class="modal fade" id="updateOrSave" tabindex="-1" data-backdrop="false" role="document"
@@ -96,95 +96,86 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-title text-center" id="exampleModalLabel">Certificado ISTL</h3><br>
-                        <h4 class="modal-subtitle"style="padding-top:25px;" >Campos obligatorios</h4>
+                        <h4 class="modal-subtitle" style="padding-top:25px;">Campos obligatorios</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <div>
-                                <div>
-                                    <form role="form" [formGroup]="form_certifi" (ngSubmit)="newCertificado()"
-                                        novalidate>
-                                        <div class="row mx-auto">
-                                            <input type="text" class="form-control" [(ngModel)]="Certificado._id"
-                                                formControlName="_id" disabled><br>
-                                            <br>
-                                            <div class="col-md-4">
-                                                <label>Codigo:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="Certificado.codigo"
-                                                    formControlName="codigo" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Cedula:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="Certificado.dni"
-                                                    formControlName="dni" id="cedula">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Nombre del proyecto:</label>
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="Certificado.name_project"
-                                                    formControlName="name_project" id="proyecto">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Barrio:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="Certificado.barrio"
-                                                    formControlName="barrio" id="barrio">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Parroquia:</label>
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="Certificado.parroquia" formControlName="parroquia"
-                                                    id="parroquia">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Canton:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="Certificado.canton"
-                                                    formControlName="canton" id="canton">
-                                            </div>
-                                        </div>
-                                        <div class="row mx-auto">
-                                            <div class="col-md-4">
-                                                <label>Nombre Completo:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="Certificado.names"
-                                                    formControlName="names">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Nombre de la carrera:</label>
-                                                <select name="miselect" class="form-control"
-                                                    [(ngModel)]="Certificado.name_carrer" formControlName="name_carrer">
-                                                    <option [value]="carrera.id" *ngFor="let carrera of carrera">
-                                                        {{carrera.nameCarrer}}</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Numero de horas:</label>
-                                                <input type="number" class="form-control"
-                                                    [(ngModel)]="Certificado.horas" formControlName="horas" id="horas">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Fecha de Inicio:</label>
-                                                <input type="date" name="trip-start" class="form-control"
-                                                    [(ngModel)]="Certificado.date_inicio" formControlName="date_inicio"
-                                                    id="fechainicio">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Fecha de Fin:</label>
-                                                <input type="date" name="trip-start" class="form-control"
-                                                    [(ngModel)]="Certificado.date_fin" formControlName="date_fin"
-                                                    id="fechaFin">
-                                            </div><br>
-                                        </div><br>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-dark"
-                                                [disabled]="!form_certifi.valid">Guardar</button>
-                                            <button type="button" class="btn btn-primary"
-                                                data-dismiss="modal">Cancelar</button>
-                                        </div>
-                                    </form>
+                            <form role="form" [formGroup]="form_certifi" (ngSubmit)="newCertificado()" novalidate>
+                                <div class="row mx-auto">
+                                    <input type="text" class="form-control" [(ngModel)]="Certificado._id"
+                                        formControlName="_id" disabled><br>
+                                    <br>
+                                    <div class="col-md-4">
+                                        <label>Codigo:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.codigo"
+                                            formControlName="codigo" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Cedula:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.dni"
+                                            formControlName="dni" id="cedula">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Nombre del proyecto:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.name_project"
+                                            formControlName="name_project" id="proyecto">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Barrio:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.barrio"
+                                            formControlName="barrio" id="barrio">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Parroquia:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.parroquia"
+                                            formControlName="parroquia" id="parroquia">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Canton:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.canton"
+                                            formControlName="canton" id="canton">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row mx-auto">
+                                    <div class="col-md-4">
+                                        <label>Nombre Completo:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Certificado.names"
+                                            formControlName="names">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Nombre de la carrera:</label>
+                                        <select name="miselect" class="form-control"
+                                            [(ngModel)]="Certificado.name_carrer" formControlName="name_carrer">
+                                            <option [value]="carrera.id" *ngFor="let carrera of carrera">
+                                                {{carrera.nameCarrer}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Numero de horas:</label>
+                                        <input type="number" class="form-control" [(ngModel)]="Certificado.horas"
+                                            formControlName="horas" id="horas">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Fecha de Inicio:</label>
+                                        <input type="date" name="trip-start" class="form-control"
+                                            [(ngModel)]="Certificado.date_inicio" formControlName="date_inicio"
+                                            id="fechainicio">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Fecha de Fin:</label>
+                                        <input type="date" name="trip-start" class="form-control"
+                                            [(ngModel)]="Certificado.date_fin" formControlName="date_fin" id="fechaFin">
+                                    </div><br>
+                                </div><br>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-dark"
+                                        [disabled]="!form_certifi.valid">Guardar</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
