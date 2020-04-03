@@ -91,4 +91,8 @@ export class PagPrincipalComponent implements OnInit {
   cancel(){
     this.photoSelected=false
   }
+  cerrarSesion(){
+    localStorage.removeItem('sesion')
+    this.router.navigate(['login'])
+  }
 }
