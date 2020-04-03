@@ -14,13 +14,13 @@
     <div class="container" id="certificado" *ngFor="let user of Usuario">
         <div class="row mx-auto" style="padding-top: 25px;">
             <div class="col mx-auto">
-                <img [src]="'http://res.cloudinary.com/cloudinary-imageistl/image/upload/' + viewPhoto.path ||'../../assets/istl000.png'" class="card-img-top img-fluid">
+                <img [src]="viewPhoto.path ||'../../assets/istl000.png'" class="card-img-top img-fluid">
             </div>
             <div class="col  mx-auto" >
-                <img [src]="'http://res.cloudinary.com/cloudinary-imageistl/image/upload/' + viewPhoto2.path ||' ../../assets/SENESCYT.png'" class="card-img-top img-fluid">
+                <img [src]="viewPhoto2.path ||' ../../assets/SENESCYT.png'" class="card-img-top img-fluid">
             </div>
             <div class="col mx-auto">
-                <img [src]="'http://res.cloudinary.com/cloudinary-imageistl/image/upload/' + viewPhoto3.path ||' ../../assets/GADVILCA.png'" class="card-img-top img-fluid">
+                <img [src]="viewPhoto3.path ||' ../../assets/GADVILCA.png'" class="card-img-top img-fluid">
             </div>
         </div>
         <div class="row" style="padding-top: 50px;">
